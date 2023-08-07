@@ -19,8 +19,8 @@ function createProduct(itemNumber, itemName, itemCost) {
     return productInfo;
 }
 
-    const productDescription = "Esta MacBook tiene 16 GB de RAM.";
-    const product1 = createProduct(1, "MacBook", 600);
-    console.log(product1);
-    const product2 = createProduct(2, "iPhone", 800);
-    console.log(product2);
+const productDescription = "Esta MacBook tiene 16 GB de RAM.";
+const product1 = createProduct(1, "MacBook", 600);
+console.log(product1);
+const product2 = createProduct(2, "iPhone", 800);
+console.log(product2);
