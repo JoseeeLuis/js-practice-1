@@ -49,8 +49,11 @@
 
 
 let items=[]
-let promptUser= prompt("Your user");
-let promptPassword = prompt("Your password");
+const admin ={
+  email : `admin`,
+  password : `1234`
+};
+
 
 
 function createItem(title,description,cost,img){
@@ -70,24 +73,22 @@ function subirItem(item,array){
 }
 
 
-function verifyUser(promptUser, promptPassword){
+function verifyUser(){
   
-  let admin ={
-    email : `1`,
-    password : `1234`
-  };
+  const promptUser= prompt("Your user");
+  const promptPassword = prompt("Your password");
 
   if(admin.email== promptUser && admin.password== promptPassword ){
 
-    alert(admin.email == promptUser && admin.password == promptPassword)
         subirItem(
     createItem (`mate`, `sarasa`, 132 , `img/kaka`),
     items 
     )
+    return admin.email == promptUser && admin.password == promptPassword;
   } else {
-    alert(admin.email == promptUser && admin.password == promptPassword)
+    return admin.email == promptUser && admin.password == promptPassword;
   }   
 }
-console.log(verifyUser(promptUser,promptPassword))
+console.log(verifyUser())
 console.log(items)
 
