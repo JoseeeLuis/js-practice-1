@@ -19,7 +19,7 @@
 // }
 
 // function addDescriptionAndSaleInfo(product, itemDescription) {
-//     const saleInfo = calculateSalePrice(product.itemCost, 10); 
+//     const saleInfo = calculateSalePrice(product.itemCost, 10);
 
 //     product.itemDescription = itemDescription;
 //     product.discountInfo = saleInfo.discountMessage;
@@ -45,50 +45,55 @@
 // console.log(productWithDescription2);
 
 // console.log(items)
-// console.log(cost)   
+// console.log(cost)
 
-
-let items=[]
-const admin ={
-  email : `admin`,
-  password : `1234`
+const admin = {
+  email: 'admin',
+  password: '1234'
 };
 
+let items = [];
 
-
-function createItem(title,description,cost,img){
-    let item = {
+function createItem(title, description, cost, img) {
+  let item = {
     title,
     description,
     cost,
     img
-    };
-    
-    return item;
+  };
+
+  return item;
 }
 
-function subirItem(item,array){
-    array.push(item);
-    return array;
+function verifyUser() {
+  const promptUser = prompt('Your user');
+  const promptPassword = prompt('Your password');
+
+  return admin.email === promptUser && admin.password === promptPassword;
 }
 
-
-function verifyUser(){
-  
-  const promptUser= prompt("Your user");
-  const promptPassword = prompt("Your password");
-
-  if(admin.email== promptUser && admin.password== promptPassword ){
-
-        subirItem(
-    createItem (`mate`, `sarasa`, 132 , `img/kaka`),
-    items 
-    )
-    return admin.email == promptUser && admin.password == promptPassword;
-  } else {
-    return admin.email == promptUser && admin.password == promptPassword;
-  }   
+function subirItem(item, array) {
+  array.push(item);
+  return array;
 }
-console.log(verifyUser())
-console.log(items)
 
+function addItemAfterAuth() {
+  let maxAttempts = 3;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    if (verifyUser()) {
+      const newItem = createItem('mate', 'sarasa', 132, 'img/kaka');
+      subirItem(newItem, items);
+      console.log('Item added:', newItem);
+      break;
+    } else {
+      if (attempt < maxAttempts) {
+        console.log('Authentication failed. You have ' + (maxAttempts - attempt) + ' attempts remaining.');
+      } else {
+        console.log('Authentication failed. No attempts remaining.');
+      }
+    }
+  }
+}
+
+addItemAfterAuth();
