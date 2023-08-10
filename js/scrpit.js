@@ -47,53 +47,71 @@
 // console.log(items)
 // console.log(cost)
 
-const admin = {
-  email: 'admin',
-  password: '1234'
-};
+// const admin = {
+//   email: 'admin',
+//   password: '1234'
+// };
 
-let items = [];
+// let items = [];
 
-function createItem(title, description, cost, img) {
-  let item = {
-    title,
-    description,
-    cost,
-    img
-  };
+// function createItem(title, description, cost, img) {
+//   let item = {
+//     title,
+//     description,
+//     cost,
+//     img
+//   };
 
-  return item;
-}
+//   return item;
+// }
 
-function verifyUser() {
-  const promptUser = prompt('Your user');
-  const promptPassword = prompt('Your password');
+// function verifyUser() {
+//   const promptUser = prompt('Your user');
+//   const promptPassword = prompt('Your password');
 
-  return admin.email === promptUser && admin.password === promptPassword;
-}
+//   return admin.email === promptUser && admin.password === promptPassword;
+// }
 
-function subirItem(item, array) {
-  array.push(item);
-  return array;
-}
+// function subirItem(item, array) {
+//   array.push(item);
+//   return array;
+// }
 
-function addItemAfterAuth() {
-  let maxAttempts = 3;
+// function addItemAfterAuth() {
+//   let maxAttempts = 3;
 
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    if (verifyUser()) {
-      const newItem = createItem('mate', 'sarasa', 132, 'img/kaka');
-      subirItem(newItem, items);
-      console.log('Item added:', newItem);
-      break;
-    } else {
-      if (attempt < maxAttempts) {
-        console.log('Authentication failed. You have ' + (maxAttempts - attempt) + ' attempts remaining.');
-      } else {
-        console.log('Authentication failed. No attempts remaining.');
-      }
-    }
+//   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+//     if (verifyUser()) {
+//       const newItem = createItem('mate', 'sarasa', 132, 'img/kaka');
+//       subirItem(newItem, items);
+//       console.log('Item added:', newItem);
+//       break;
+//     } else {
+//       if (attempt < maxAttempts) {
+//         console.log('Authentication failed. You have ' + (maxAttempts - attempt) + ' attempts remaining.');
+//       } else {
+//         console.log('Authentication failed. No attempts remaining.');
+//       }
+//     }
+//   }
+// }
+
+// addItemAfterAuth();
+
+const secretNumber= 1;
+let userNumber = Number(prompt( `insert a number`))
+attempts=3
+do{
+  if(userNumber===secretNumber){
+    console.log(`You win`)
+    break
   }
-}
+  else{
+    attempts--
+    // alert(`try again`)
+    // alert(`You have ${attempts} attempts`)
+    userNumber = Number(prompt(`insert other number`))
+    console.log(attempts)
+  }
 
-addItemAfterAuth();
+} while(attempts > 0 && userNumber != secretNumber);
