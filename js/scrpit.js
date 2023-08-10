@@ -1,51 +1,67 @@
-// function calculateSalePrice(cost, discount) {
-//     let cuotas= cost/12;
+function calculateSalePrice(cost, discount) {
+    let cuotas= cost/12;
 
-//     return {
-//         discountMessage: `Descuento: el descuento es de ${discount}%
-//     Precio con descuento: $${cost - (cost * discount) / 100}`,
-//         installmentMessage: `Hasta 12 cuotas sin descuento de: $${
-//         cuotas.toFixed(2)
-//         } por mes`,
-//     };
-// }
+    return {
+        discountMessage: `Descuento: el descuento es de ${discount}%
+    Precio con descuento: $${cost - (cost * discount) / 100}`,
+        installmentMessage: `Hasta 12 cuotas sin descuento de: $${
+        cuotas.toFixed(2)
+        } por mes`,
+    };
+}
 
-// function createProduct(itemNumber, itemName, itemCost) {
-//     return {
-//         itemNumber: itemNumber,
-//         itemName: itemName,
-//         itemCost: itemCost,
-//     };
-// }
+function createProduct(itemNumber, itemName, itemCost) {
+    return {
+        itemNumber: itemNumber,
+        itemName: itemName,
+        itemCost: itemCost,
+    };
+}
 
-// function addDescriptionAndSaleInfo(product, itemDescription) {
-//     const saleInfo = calculateSalePrice(product.itemCost, 10);
+function addDescriptionAndSaleInfo(product, itemDescription) {
+    const saleInfo = calculateSalePrice(product.itemCost, 10);
 
-//     product.itemDescription = itemDescription;
-//     product.discountInfo = saleInfo.discountMessage;
-//     product.installmentInfo = saleInfo.installmentMessage;
+    product.itemDescription = itemDescription;
+    product.discountInfo = saleInfo.discountMessage;
+    product.installmentInfo = saleInfo.installmentMessage;
 
-//     return product;
-// }
-// let items = [ `Mackbook`, `Iphone-14`,`apple-watch`]
-// let cost = [ 5000, 2230,645]
-// items.push(`Iphone-13`)
-// items.push(`oculus`)
-// cost.unshift(2000)
-// cost.unshift(50000)
+    return product;
+}
 
-// const product1 = createProduct(1, items[0], cost[0]);
+function convertToString(object){
+  return JSON.stringify(object);
+  
+}
 
-// const productWithDescription1 = addDescriptionAndSaleInfo(product1,"Esta MacBook tiene 16 GB de RAM. Es la mas nueva del mercado tiene un pentium de ultima generacion ");
+function pushToProducts(itemsinfo){
+  products.push(itemsinfo)
+}
+;
+let products = []
+console.log(products)
+let items = [ `Mackbook`, `Iphone-14`,`apple-watch`]
+let cost = [ 5000, 2230,645]
+items.push(`Iphone-13`)
+items.push(`oculus`)
+cost.unshift(2000)
+cost.unshift(50000)
 
-// console.log(productWithDescription1);
 
-// const product2 = createProduct(2, items[1], cost[1]);
-// const productWithDescription2 = addDescriptionAndSaleInfo(product2,"Este iPhone tiene una cámara avanzada. la camara cuenta con 10px de gran angular y 1px de macro");
-// console.log(productWithDescription2);
+const product1 = createProduct(1, items[0], cost[0]);
 
-// console.log(items)
-// console.log(cost)
+const productWithDescription1 = addDescriptionAndSaleInfo(product1,"Esta MacBook tiene 16 GB de RAM. Es la mas nueva del mercado tiene un pentium de ultima generacion ");
+
+console.log(productWithDescription1);
+
+const product2 = createProduct(2, items[1], cost[1]);
+const productWithDescription2 = addDescriptionAndSaleInfo (product2,"Este iPhone tiene una cámara avanzada. la camara cuenta con 10px de gran angular y 1px de macro");
+console.log(productWithDescription2);
+
+pushToProducts(product1)
+pushToProducts(product2)
+products=convertToString(products)
+
+localStorage.setItem("products",products)
 
 // const admin = {
 //   email: 'admin',
@@ -98,20 +114,21 @@
 
 // addItemAfterAuth();
 
-const secretNumber= 1;
-let userNumber = Number(prompt( `insert a number`))
-attempts=3
-do{
-  if(userNumber===secretNumber){
-    console.log(`You win`)
-    break
-  }
-  else{
-    attempts--
-    // alert(`try again`)
-    // alert(`You have ${attempts} attempts`)
-    userNumber = Number(prompt(`insert other number`))
-    console.log(attempts)
-  }
+// const secretNumber= 1;
+// let userNumber = Number(prompt( `insert a number`))
+// attempts=3
+// do{
+//   if(userNumber===secretNumber){
+//     console.log(`You win`)
+//     break
+//   }
+//   else{
+//     attempts--
+//     // alert(`try again`)
+//     // alert(`You have ${attempts} attempts`)
+//     userNumber = Number(prompt(`insert other number`))
+//     console.log(attempts)
+//   }
 
-} while(attempts > 0 && userNumber != secretNumber);
+// } while(attempts > 0 && userNumber != secretNumber);
+
