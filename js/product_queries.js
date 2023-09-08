@@ -29,14 +29,14 @@ const products = [
 // Buscar el producto con id=2
 function productWithId2() {
     const idSolicitado = 2;
+    const product2 = products.find(product => product.id === idSolicitado);
 
-    for (const product of products) {
-        if (product.id === idSolicitado) {
-            return product;
-        }
+    if (product2) {
+        console.log("Producto encontrado:", product2);
+    } else {
+        console.log("Producto no encontrado con ID:", idSolicitado);
     }
 }
-
 const result1 = productWithId2();
 console.log(result1);
 
@@ -44,42 +44,57 @@ console.log("separador");
 
 // Productos con precio mayor a 1500
 function expensiveProducts() {
-    const expensiveProducts = [];
 
-    for (const product of products) {
-        if (product.price > 1500) {
-            expensiveProducts.push(product);
-        }
-    }
-
+    expensiveProducts= products.filter(product=>product.price>1500);    
     return expensiveProducts;
 }
 
 const result2 = expensiveProducts();
 console.log(result2);
+console.log("yeiiii")
 
 // Mostrar por consola el precio de la cuota de cada producto (12 cuotas)
 function showProductInstallments() {
-    for (const product of products) {
-        const installments = (product.price / 12).toFixed(2);
-        console.log(`The price of product ${product.title}in 12 installments is ${installments}`);
-    }
+    // for (const product of products) {
+    //     const installments = (product.price / 12).toFixed(2);
+    //     console.log(`The price of product ${product.title}in 12 installments is ${installments}`);
+    // }
+    let cuotas=products.map(product=> ({
+        title:product.title,
+        installmentPrice: (product.price/12).toFixed(2)
+    }))
+
+    return cuotas
 }
 
-showProductInstallments();
+console.log(showProductInstallments());
 
 // Productos que sean "Macbook"
 function searchMacbooks() {
-    const macbooksResults = [];
+    // const macbooksResults = [];
 
-    for (const product of products) {
-        if (product.title.includes("Macbook")) {
-            macbooksResults.push(product);
-        }
-    }
+    // for (const product of products) {
+    //     if (product.title.includes("Macbook")) {
+    //         macbooksResults.push(product);   
+    //     }
+    // }
 
-    return macbooksResults;
+    // return macbooksResults;
+    let macbooks= products.filter(product=>product.title.includes("Macbook"))
+    return macbooks
 }
 
 const result3 = searchMacbooks();
 console.log(result3);
+
+function thereAreExpensiveProducts() {
+    return products.some(product => product.price >= 2000);
+}
+console.log(thereAreExpensiveProducts())
+
+function ProductsWithDisccount(){
+    let ProductsWithDisccount= products.map(product=>product.price*0.9)
+    return ProductsWithDisccount
+}
+console.log(ProductsWithDisccount())
+
